@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Social starter pack</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; color: var(--bm-paper); font-family: var(--font-text); }
+  header { padding: 40px 56px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  h1 { font-family: var(--font-display); font-weight: 900; font-size: 48px; letter-spacing: -0.02em; text-transform: uppercase; margin: 0 0 8px; color: var(--bm-paper); }
+  .sub { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(244,239,228,0.55); }
+  .grid { padding: 32px 56px 80px; }
+  .row { margin: 56px 0; }
+  .row-h { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bm-pink); margin-bottom: 24px; }
+  .cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; }
+  .card { display: block; text-decoration: none; color: inherit; }
+  .frame { background: #fff; aspect-ratio: 1080/1350; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  .frame.story { aspect-ratio: 1080/1920; }
+  .frame iframe { position: absolute; top: 0; left: 0; width: 1080px; height: 1350px; border: 0; transform-origin: top left; }
+  .frame.story iframe { height: 1920px; }
+  .label { margin-top: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(244,239,228,0.7); }
+  .label b { color: var(--bm-paper); }
+  a.captions { display: inline-block; margin-top: 16px; padding: 14px 22px; background: var(--bm-pink); color: #fff; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Social Starter Pack</h1>
+  <div class="sub">5 posts · 5 stories · captions · drinkbossmode.net</div>
+  <a class="captions" href="CAPTIONS.md" target="_blank">Read captions & hashtags →</a>
+</header>
+
+<div class="grid">
+
+  <div class="row">
+    <div class="row-h">— IG / FB feed posts · 1080×1350 —</div>
+    <div class="cards" id="feed"></div>
+  </div>
+
+  <div class="row">
+    <div class="row-h">— IG / FB stories · 1080×1920 —</div>
+    <div class="cards" id="stories"></div>
+  </div>
+
+</div>
+
+<script>
+const feed = [
+  { src: 'post-1-stat.html', label: '01 · Stat slam', sub: '144% faster recovery' },
+  { src: 'post-2-founder.html', label: '02 · Founder note', sub: 'Built in adversity' },
+  { src: 'post-3-two-universes.html', label: '03 · Two universes', sub: 'Product tease' },
+  { src: 'post-4-manifesto.html', label: '04 · Manifesto', sub: 'Hello peak state' },
+  { src: 'post-5-waitlist.html', label: '05 · Waitlist', sub: 'CTA · drinkbossmode.net' },
+];
+const stories = [
+  { src: 'story-1-stat.html', label: '01 · Stat', sub: '144%' },
+  { src: 'story-2-founder.html', label: '02 · Founder', sub: 'Built in adversity' },
+  { src: 'story-3-two-universes.html', label: '03 · Two universes', sub: 'Product' },
+  { src: 'story-4-manifesto.html', label: '04 · Manifesto', sub: 'Hello peak state' },
+  { src: 'story-5-waitlist.html', label: '05 · Waitlist', sub: 'CTA' },
+];
+
+function build(items, hostId, isStory) {
+  const host = document.getElementById(hostId);
+  items.forEach(it => {
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = it.src;
+    a.target = '_blank';
+    a.innerHTML = `
+      <div class="frame${isStory ? ' story' : ''}"><iframe src="${it.src}" scrolling="no"></iframe></div>
+      <div class="label"><b>${it.label}</b><br>${it.sub}</div>
+    `;
+    host.appendChild(a);
+  });
+}
+build(feed, 'feed', false);
+build(stories, 'stories', true);
+
+// Scale iframes to fit
+function scale() {
+  document.querySelectorAll('.frame').forEach(f => {
+    const w = f.clientWidth;
+    const iframe = f.querySelector('iframe');
+    iframe.style.transform = `scale(${w / 1080})`;
+  });
+}
+window.addEventListener('load', () => setTimeout(scale, 200));
+window.addEventListener('resize', scale);
+</script>
+</body>
+</html>

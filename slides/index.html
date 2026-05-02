@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Sample Deck</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="deck-stage.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #111; }
+
+  /* All slides are 1920×1080. deck-stage scales them to fit. */
+  deck-stage > section {
+    width: 1920px;
+    height: 1080px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    font-family: var(--font-text);
+    color: var(--bm-ink);
+    background: var(--bm-paper);
+  }
+
+  /* ───── shared bits ───── */
+  .pad { padding: 96px 128px; }
+  .eyebrow-l {
+    font-family: var(--font-text);
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  .num-l { font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.04em; }
+  .footer-l {
+    position: absolute; left: 128px; right: 128px; bottom: 56px;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 18px; color: var(--fg-3);
+    letter-spacing: 0.04em;
+  }
+  .wm {
+    font-family: var(--font-display); font-weight: 900;
+    text-transform: uppercase; line-height: 0.86;
+    letter-spacing: -0.025em;
+  }
+
+  /* ───── 01 — Cover (paper + framed facets) ───── */
+  .s-cover {
+    background: var(--bm-paper);
+  }
+  .s-cover .facet-band-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 220px;
+    background: url('../assets/facets-purple-frame.png') top center / cover no-repeat;
+  }
+  .s-cover .facet-band-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
+    background: url('../assets/facets-purple-frame.png') bottom center / cover no-repeat;
+    transform: scaleY(-1);
+  }
+  .s-cover .center {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+  }
+  .s-cover .wm-big { font-size: 280px; color: var(--bm-ink); }
+  .s-cover .tag {
+    margin-top: 24px;
+    background: var(--bm-pink); color: #fff;
+    padding: 14px 32px;
+    font-weight: 800; font-size: 28px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .s-cover .sub {
+    margin-top: 56px;
+    font-family: var(--font-mono); font-size: 22px;
+    color: var(--bm-grade-500); letter-spacing: 0.16em;
+  }
+
+  /* ───── 02 — Section opener (full-bleed facet) ───── */
+  .s-section { background: #000; color: #fff; }
+  .s-section .bg {
+    position: absolute; inset: 0;
+    background: url('../assets/facets-navy.png') center/cover;
+  }
+  .s-section .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(11,10,40,0.35) 0%, rgba(11,10,40,0.65) 100%);
+  }
+  .s-section .copy {
+    position: absolute; left: 128px; bottom: 140px;
+    max-width: 1300px;
+  }
+  .s-section .num { color: var(--bm-pink); font-family: var(--font-mono); font-size: 28px; letter-spacing: 0.08em; }
+  .s-section h1 { font-size: 200px; color: #fff; margin-top: 16px; }
+  .s-section .lede { font-size: 32px; max-width: 1100px; margin-top: 24px; line-height: 1.3; color: rgba(255,255,255,0.85); }
+
+  /* ───── 03 — Pillars (3 numbered) ───── */
+  .s-pillars { background: var(--bm-paper); }
+  .s-pillars h2 { font-size: 88px; max-width: 1200px; }
+  .s-pillars .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+    margin-top: 96px;
+  }
+  .s-pillars .pillar { border-top: 4px solid var(--bm-ink); padding-top: 28px; }
+  .s-pillars .pillar .n { font-family: var(--font-mono); font-size: 24px; color: var(--bm-pink); letter-spacing: 0.04em; }
+  .s-pillars .pillar .t { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 56px; line-height: 0.95; margin-top: 16px; letter-spacing: -0.01em;}
+  .s-pillars .pillar .d { font-size: 22px; line-height: 1.4; margin-top: 20px; color: var(--bm-grade-600); max-width: 460px; }
+
+  /* ───── 04 — Product spotlight ───── */
+  .s-product { background: var(--bm-paper); }
+  .s-product .grid {
+    position: absolute; inset: 0;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  }
+  .s-product .left { padding: 96px 0 96px 128px; }
+  .s-product .right {
+    height: 100%; position: relative; overflow: hidden;
+    background: var(--bm-pink-bg);
+  }
+  .s-product .right .bg-facet {
+    position: absolute; inset: 0; opacity: 0.9;
+    background: url('../assets/facets-pink.png') center/cover;
+  }
+  .s-product .right img {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    height: 92%;
+  }
+  .s-product .stats { display: flex; gap: 56px; margin-top: 48px; }
+  .s-product .stat .v { font-family: var(--font-display); font-weight: 900; font-size: 96px; line-height: 0.9; color: var(--bm-pink); }
+  .s-product .stat .l { font-family: var(--font-text); font-weight: 700; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bm-grade-600); margin-top: 8px;}
+  .s-product .ing-row { margin-top: 64px; display: flex; gap: 16px; flex-wrap: wrap;}
+  .s-product .cap { background: var(--bm-ink); color: var(--bm-paper); padding: 12px 22px; border-radius: 999px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: 16px;}
+
+  /* ───── 05 — Big stat ───── */
+  .s-stat { background: var(--bm-pink); color: #fff; display: flex; align-items: center; padding: 0 128px; }
+  .s-stat .v { font-family: var(--font-display); font-weight: 900; font-size: 720px; line-height: 0.86; letter-spacing: -0.04em; }
+  .s-stat .right { margin-left: 64px; max-width: 700px; }
+  .s-stat .right .l { font-family: var(--font-text); font-weight: 700; font-size: 28px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .s-stat .right .d { font-size: 28px; line-height: 1.4; margin-top: 24px; }
+
+  /* ───── 06 — Two-up comparison ───── */
+  .s-compare { background: var(--bm-paper); }
+  .s-compare .head { padding: 96px 128px 0; }
+  .s-compare h2 { font-size: 88px; }
+  .s-compare .row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    padding: 64px 128px; height: calc(100% - 320px); box-sizing: border-box;
+  }
+  .s-compare .col {
+    border: 4px solid var(--bm-ink); border-radius: 12px; padding: 56px;
+    background: #fff; box-shadow: 12px 12px 0 0 var(--bm-ink);
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .s-compare .col.energy { background: var(--bm-royal); color: #fff; box-shadow: 12px 12px 0 0 var(--bm-blue); border-color: var(--bm-blue); }
+  .s-compare .col h3 { font-size: 64px; line-height: 0.9; }
+  .s-compare .col ul { padding: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 14px;}
+  .s-compare .col li { font-size: 22px; padding-left: 32px; position: relative; line-height: 1.4;}
+  .s-compare .col li::before { content: ""; position: absolute; left: 0; top: 12px; width: 18px; height: 4px; background: var(--bm-pink); }
+  .s-compare .col.energy li::before { background: var(--bm-blue); }
+
+  /* ───── 07 — Big quote ───── */
+  .s-quote { background: #000; color: var(--bm-paper); }
+  .s-quote .bg { position: absolute; inset: 0; background: url('../assets/facets-black.png') center/cover; opacity: 0.7;}
+  .s-quote .copy { position: absolute; left: 128px; right: 128px; top: 50%; transform: translateY(-50%);}
+  .s-quote .mark { font-family: var(--font-display); font-weight: 900; font-size: 240px; line-height: 0.7; color: var(--bm-pink); }
+  .s-quote q { quotes: none; font-family: var(--font-display); font-weight: 800; font-size: 120px; line-height: 1; text-transform: uppercase; display: block; max-width: 1500px; margin-top: -60px; letter-spacing: -0.02em; }
+  .s-quote .attr { font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,239,228,0.7); margin-top: 56px; }
+
+  /* ───── 08 — Closer ───── */
+  .s-closer { background: var(--bm-ink); color: var(--bm-paper); }
+  .s-closer .bg { position: absolute; inset: 0; background: url('../assets/facets-black.png') center/cover; opacity: 0.55; }
+  .s-closer .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .s-closer .wm-big { font-size: 240px; color: var(--bm-paper); }
+  .s-closer .tag {
+    margin-top: 24px;
+    background: var(--bm-pink); color: #fff;
+    padding: 16px 36px;
+    font-weight: 800; font-size: 32px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .s-closer .url { margin-top: 80px; font-family: var(--font-mono); font-size: 28px; letter-spacing: 0.14em; color: rgba(244,239,228,0.7); }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- 01 COVER -->
+  <section data-screen-label="01 Cover" class="s-cover">
+    <div class="facet-band-top"></div>
+    <div class="facet-band-bottom"></div>
+    <div class="center">
+      <div class="wm wm-big">BOSS<br>MODE</div>
+      <div class="tag">UNLOCK PEAK STATE</div>
+      <div class="sub">PERFORMANCE-LUXURY · 2026 BRAND DECK</div>
+    </div>
+  </section>
+
+  <!-- 02 SECTION OPENER -->
+  <section data-screen-label="02 Section Opener" class="s-section">
+    <div class="bg"></div>
+    <div class="scrim"></div>
+    <div class="copy">
+      <div class="num">01 / THE BRAND</div>
+      <h1 class="wm">SIP.<br>DOMINATE.<br>REPEAT.</h1>
+      <p class="lede">Two categories, one mission — clean energy and ready-to-drink peptide nutrition for people who treat their body like it's worth investing in.</p>
+    </div>
+    <div class="footer-l" style="color: rgba(255,255,255,0.55);">
+      <span>BOSS MODE™</span><span>01 / 08</span>
+    </div>
+  </section>
+
+  <!-- 03 PILLARS -->
+  <section data-screen-label="03 Pillars" class="s-pillars pad">
+    <span class="eyebrow-l" style="color: var(--bm-pink);">WHAT WE STAND FOR</span>
+    <h2 class="wm" style="margin-top: 24px;">Three pillars.<br>No compromises.</h2>
+    <div class="grid">
+      <div class="pillar">
+        <div class="n">01</div>
+        <div class="t">Clean<br>Energy</div>
+        <div class="d">Green tea caffeine, Cognizin® citicoline, L-theanine. Smooth focus, no crash.</div>
+      </div>
+      <div class="pillar">
+        <div class="n">02</div>
+        <div class="t">Peptide<br>Performance</div>
+        <div class="d">2.4g clinically dosed PeptiStrong® peptides. Strength, recovery, daily output.</div>
+      </div>
+      <div class="pillar">
+        <div class="n">03</div>
+        <div class="t">RTD<br>Convenience</div>
+        <div class="d">12 fl oz. Shelf-stable. Built for the gym bag, the desk, the back of the fridge.</div>
+      </div>
+    </div>
+    <div class="footer-l"><span>BOSS MODE™ · BRAND PILLARS</span><span>03 / 08</span></div>
+  </section>
+
+  <!-- 04 PRODUCT SPOTLIGHT -->
+  <section data-screen-label="04 Product Spotlight" class="s-product">
+    <div class="grid">
+      <div class="left">
+        <span class="eyebrow-l" style="color: var(--bm-pink-deep);">MYO-PEPTIDE · STRAWBERRY MILKSHAKE</span>
+        <h2 class="wm" style="font-size: 128px; margin-top: 24px;">Worlds-first<br>RTD peptide<br>shake.</h2>
+        <div class="stats">
+          <div class="stat"><div class="v">20g</div><div class="l">Protein</div></div>
+          <div class="stat"><div class="v">2.4g</div><div class="l">PeptiStrong®</div></div>
+          <div class="stat"><div class="v">5g</div><div class="l">Sugar</div></div>
+        </div>
+        <div class="ing-row">
+          <span class="cap">Featuring PeptiStrong®</span>
+          <span class="cap">PeakO2® Mushrooms</span>
+          <span class="cap">MCT Oil</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="bg-facet"></div>
+        <img src="../assets/can-myo-strawberry.png" alt="Strawberry Milkshake">
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 BIG STAT -->
+  <section data-screen-label="05 Big Stat" class="s-stat">
+    <div class="v">20g</div>
+    <div class="right">
+      <div class="l">Protein per can</div>
+      <div class="d">Plus 2.4g PeptiStrong® peptides — clinically dosed for muscle health, endurance, and sustained focus throughout the day.</div>
+    </div>
+    <div class="footer-l" style="color: rgba(255,255,255,0.7);"><span>MYO-PEPTIDE · STRAWBERRY MILKSHAKE</span><span>05 / 08</span></div>
+  </section>
+
+  <!-- 06 COMPARISON -->
+  <section data-screen-label="06 Comparison" class="s-compare">
+    <div class="head">
+      <span class="eyebrow-l" style="color: var(--bm-pink);">TWO CATEGORIES · ONE MISSION</span>
+      <h2 class="wm" style="margin-top: 16px;">Built for the<br>boss in you.</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span class="eyebrow-l" style="color: var(--bm-pink-deep);">MYO-PEPTIDE</span>
+        <h3 class="wm">Strength<br>+ Recovery</h3>
+        <ul>
+          <li>20g protein, 2.4g PeptiStrong® peptides</li>
+          <li>PeakO2® organic mushroom blend</li>
+          <li>MCT oil, 5g sugar, no artificial sweeteners</li>
+          <li>Strawberry · Vanilla Marshmallow · Chai Latte</li>
+        </ul>
+      </div>
+      <div class="col energy">
+        <span class="eyebrow-l" style="color: var(--bm-blue);">ENERGY</span>
+        <h3 class="wm">Focus<br>+ Output</h3>
+        <ul>
+          <li>Green tea caffeine, Cognizin®, CognatiQ®</li>
+          <li>N-Acetyl-L-Tyrosine, L-theanine</li>
+          <li>5g sugar, no crash, no artificial sweeteners</li>
+          <li>Apex Punch · Candied Strawberry · Frosted Lemonade</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 BIG QUOTE -->
+  <section data-screen-label="07 Big Quote" class="s-quote">
+    <div class="bg"></div>
+    <div class="copy">
+      <div class="mark">"</div>
+      <q>Treat your body like<br>it's worth investing in.</q>
+      <div class="attr">— BOSS MODE · BRAND THESIS</div>
+    </div>
+    <div class="footer-l" style="color: rgba(244,239,228,0.55);"><span>BOSS MODE™</span><span>07 / 08</span></div>
+  </section>
+
+  <!-- 08 CLOSER -->
+  <section data-screen-label="08 Closer" class="s-closer">
+    <div class="bg"></div>
+    <div class="center">
+      <div class="wm wm-big">BOSS<br>MODE</div>
+      <div class="tag">SIP. DOMINATE. REPEAT.</div>
+      <div class="url">BOSSMODE.COM · @BOSSMODE</div>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>

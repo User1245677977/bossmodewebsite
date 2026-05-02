@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 4px; font-family: var(--font-text); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; border: 2px solid var(--bm-ink); transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+  .btn-primary { background: var(--bm-pink); color: #fff; border-color: var(--bm-ink); box-shadow: 4px 4px 0 0 var(--bm-ink); }
+  .btn-primary:hover { box-shadow: 2px 2px 0 0 var(--bm-ink); transform: translate(2px, 2px); }
+  .btn-ghost { background: transparent; color: var(--bm-ink); }
+  .btn-ghost:hover { background: var(--bm-ink); color: var(--bm-paper); }
+  .btn-energy { background: var(--bm-blue); color: var(--bm-ink); border-color: var(--bm-ink); box-shadow: 4px 4px 0 0 var(--bm-ink); }
+  .btn-disabled { background: var(--bm-grade-200); color: var(--bm-grade-400); border-color: var(--bm-grade-300); box-shadow: none; cursor: not-allowed; }
+  .row { display:flex; gap:16px; flex-wrap: wrap; align-items:center; }
+</style>
+</head><body>
+<div class="lbl-eyebrow">Buttons</div>
+<div class="row">
+  <button class="btn btn-primary">Shop Myo-Peptide →</button>
+  <button class="btn btn-ghost">Learn more</button>
+  <button class="btn btn-energy">Unlock Peak State</button>
+  <button class="btn btn-disabled">Sold out</button>
+</div>
+<div style="height: 16px;"></div>
+<div class="lbl-eyebrow">States — Primary</div>
+<div class="row">
+  <button class="btn btn-primary" style="box-shadow: 4px 4px 0 0 var(--bm-ink);">Default</button>
+  <button class="btn btn-primary" style="box-shadow: 2px 2px 0 0 var(--bm-ink); transform: translate(2px,2px);">Hover</button>
+  <button class="btn btn-primary" style="box-shadow: 0 0 0 0 var(--bm-ink); transform: translate(4px,4px);">Pressed</button>
+  <button class="btn btn-primary" style="box-shadow: 0 0 0 2px var(--bm-paper), 0 0 0 4px var(--bm-pink);">Focus</button>
+</div>
+</body></html>

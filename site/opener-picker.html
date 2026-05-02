@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boss Mode — Pick your opener</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0A0A; color: var(--bm-paper); font-family: var(--font-text); height: 100%; overflow: hidden; }
+  #root { height: 100vh; }
+  * { box-sizing: border-box; }
+  .bm-pick-tab {
+    background: rgba(244,239,228,0.08);
+    border: 1px solid rgba(244,239,228,0.15);
+    color: rgba(244,239,228,0.7);
+    padding: 10px 18px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    transition: all 200ms;
+  }
+  .bm-pick-tab:hover { background: rgba(244,239,228,0.16); color: #F4EFE4; }
+  .bm-pick-tab.active {
+    background: #F4EFE4; color: #0A0A0A; border-color: #F4EFE4;
+  }
+  .bm-pick-replay {
+    background: rgba(238, 61, 139, 0.95);
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 150ms, box-shadow 150ms;
+    box-shadow: 3px 3px 0 0 #0A0A0A;
+  }
+  .bm-pick-replay:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 0 #0A0A0A; }
+  .bm-pick-replay:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 0 #0A0A0A; }
+  @media (max-width: 1100px) {
+    .bm-pick-blurb, .bm-pick-hints { display: none; }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" src="scroll-utils.jsx"></script>
+<script type="text/babel" src="VariantA.jsx"></script>
+<script type="text/babel" src="VariantB.jsx"></script>
+<script type="text/babel" src="VariantC.jsx"></script>
+
+<script type="text/babel">
+
+const VARIANTS = [
+  { key: 'A', name: 'Hello Cadence',   short: 'A',  hint: "Hello faster recovery → Hello laser focus → Enter Peak State.",  Comp: VariantA_HelloCadence, accent: 'var(--bm-pink)' },
+  { key: 'B', name: 'Stat Barrage ↓', short: 'B',  hint: "Scroll-driven: 6 stats → goodbye crash → split-universe finale",  Comp: VariantB_StatBarrage,  accent: 'var(--bm-pink)' },
+  { key: 'C', name: 'Split Universe',  short: 'C',  hint: "Pink + blue slam in from sides, both lines side-by-side",  Comp: VariantC_SplitUniverse, accent: 'var(--bm-blue)' },
+];
+
+function PickerApp() {
+  const [picked, setPicked] = React.useState('A');
+  const [replayKey, setReplayKey] = React.useState(0);
+  const [showFounder, setShowFounder] = React.useState(false);
+
+  const current = VARIANTS.find(v => v.key === picked);
+  const Comp = current.Comp;
+
+  // Allow keyboard A/B/C + R to replay + S to scroll-toggle
+  React.useEffect(() => {
+    const onKey = (e) => {
+      const k = e.key.toUpperCase();
+      if (k === 'A' || k === 'B' || k === 'C') { setPicked(k); setReplayKey(x => x + 1); setShowFounder(false); }
+      if (k === 'R') { setReplayKey(x => x + 1); setShowFounder(false); }
+      if (k === 'S') { setShowFounder(s => !s); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  // When variant changes, reset and hide founder section
+  const onPick = (key) => { setPicked(key); setReplayKey(x => x + 1); setShowFounder(false); };
+  const onReplay = () => { setReplayKey(x => x + 1); setShowFounder(false); };
+
+  // Variant B is scroll-driven; others are autoplay timelines that fit one viewport.
+  const isScrollDriven = picked === 'B';
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+
+      {/* Stage — fills viewport */}
+      <div key={replayKey} style={{ position: 'absolute', inset: 0, overflow: (showFounder || isScrollDriven) ? 'auto' : 'hidden' }}>
+        <div style={{ width: '100%', height: (showFounder || isScrollDriven) ? 'auto' : '100vh' }}>
+          <div style={{ width: '100%', height: isScrollDriven ? 'auto' : '100vh' }}>
+            <Comp embedded={true} />
+          </div>
+          {showFounder && <FounderScrollReveal accent={current.accent} />}
+        </div>
+      </div>
+
+      {/* TOP-LEFT — variant blurb (hides on narrow) */}
+      <div className="bm-pick-blurb" style={{
+        position: 'absolute', top: 20, left: 20,
+        zIndex: 100,
+        fontFamily: 'var(--font-mono)', fontSize: 10,
+        letterSpacing: '0.2em', textTransform: 'uppercase',
+        color: 'rgba(244,239,228,0.6)',
+        maxWidth: 320, lineHeight: 1.6,
+        background: 'rgba(10,10,10,0.55)', backdropFilter: 'blur(8px)',
+        padding: '10px 14px', borderRadius: 3,
+        border: '1px solid rgba(244,239,228,0.08)',
+        pointerEvents: 'none',
+      }}>
+        <div style={{ color: '#F4EFE4', marginBottom: 4 }}>Variant {picked} · {current.name}</div>
+        <div style={{ textTransform: 'none', letterSpacing: '0.04em', fontSize: 11 }}>{current.hint}</div>
+      </div>
+
+      {/* TOP-RIGHT — keyboard hints (hides on narrow) */}
+      <div className="bm-pick-hints" style={{
+        position: 'absolute', top: 20, right: 20,
+        zIndex: 100,
+        fontFamily: 'var(--font-mono)', fontSize: 10,
+        letterSpacing: '0.18em', textTransform: 'uppercase',
+        color: 'rgba(244,239,228,0.5)',
+        textAlign: 'right',
+        background: 'rgba(10,10,10,0.55)', backdropFilter: 'blur(8px)',
+        padding: '10px 14px', borderRadius: 3,
+        border: '1px solid rgba(244,239,228,0.08)',
+        lineHeight: 1.8,
+        pointerEvents: 'none',
+      }}>
+        A/B/C switch · R replay · S scroll
+      </div>
+
+      {/* BOTTOM — single consolidated control bar (variant tabs + replay + scroll) */}
+      <div style={{
+        position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)',
+        zIndex: 100, display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center',
+        background: 'rgba(10,10,10,0.75)', backdropFilter: 'blur(12px)',
+        padding: 6, borderRadius: 4, border: '1px solid rgba(244,239,228,0.12)',
+        maxWidth: 'calc(100vw - 40px)',
+      }}>
+        {VARIANTS.map(v => (
+          <button key={v.key}
+            className={`bm-pick-tab ${picked === v.key ? 'active' : ''}`}
+            onClick={() => onPick(v.key)}
+            title={v.hint}
+          >
+            {v.short} · {v.name}
+          </button>
+        ))}
+        <div style={{ width: 1, alignSelf: 'stretch', background: 'rgba(244,239,228,0.15)', margin: '0 4px' }} />
+        <button className="bm-pick-replay" onClick={onReplay}>↻ Replay</button>
+        <button
+          className="bm-pick-tab"
+          onClick={() => setShowFounder(s => !s)}
+          style={{ background: showFounder ? 'rgba(238, 61, 139, 0.25)' : undefined }}
+        >
+          {showFounder ? '↑ Hide scroll' : '↓ Scroll'}
+        </button>
+      </div>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<PickerApp/>);
+</script>
+
+</body>
+</html>

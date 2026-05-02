@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boss Mode — Landing-page opener exploration</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; color: var(--bm-paper); font-family: var(--font-text); }
+  * { box-sizing: border-box; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="scroll-utils.jsx"></script>
+<script type="text/babel" src="VariantA.jsx"></script>
+<script type="text/babel" src="VariantB.jsx"></script>
+<script type="text/babel" src="VariantC.jsx"></script>
+
+<script type="text/babel">
+function ReplayBar({ onReplay }) {
+  return (
+    <div style={{
+      position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)',
+      zIndex: 100,
+      background: 'rgba(10,10,10,0.78)', backdropFilter: 'blur(8px)',
+      color: '#F4EFE4',
+      padding: '6px 14px', borderRadius: 999,
+      fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em',
+      textTransform: 'uppercase',
+      display: 'flex', alignItems: 'center', gap: 10,
+      cursor: 'pointer',
+      border: '1px solid rgba(244,239,228,0.18)',
+    }} onClick={onReplay}>
+      <span>↻</span><span>Replay</span>
+    </div>
+  );
+}
+
+function VariantStage({ children, label }) {
+  const [key, setKey] = React.useState(0);
+  const [showReplay, setShowReplay] = React.useState(false);
+  React.useEffect(() => {
+    const t = setTimeout(() => setShowReplay(true), 3500);
+    return () => clearTimeout(t);
+  }, [key]);
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div key={key} style={{ width: '100%', height: '100%' }}>
+        {React.cloneElement(children, { embedded: true })}
+      </div>
+      {showReplay && (
+        <ReplayBar onReplay={() => { setShowReplay(false); setKey(k => k + 1); }} />
+      )}
+    </div>
+  );
+}
+
+function FullVariant({ Hero, accent }) {
+  return (
+    <div style={{ width: '100%', minHeight: 1280, background: 'var(--bm-paper)' }}>
+      <div style={{ width: '100%', height: 800 }}>
+        <VariantStage><Hero /></VariantStage>
+      </div>
+      <FounderScrollReveal accent={accent} />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Landing-page opener — explorations"
+      subtitle="Three opening sequences for drinkbossmode.net. Each runs the dramatic intro, then transitions to the 'Built in adversity' scroll reveal. Click ↻ to replay. Drag to pan, scroll to zoom, click an artboard to focus."
+    >
+      <DCSection id="openers" title="Opening sequence — pick one">
+        <DCArtboard id="A" label="A · Wordmark Slam — type explodes, then shatters into the can" width={1280} height={1280}>
+          <FullVariant Hero={VariantA_WordmarkSlam} accent="var(--bm-pink)" />
+        </DCArtboard>
+        <DCArtboard id="B" label="B · Stat Barrage — 144%, 47%, 54%, ∞ — sniper readout to wordmark" width={1280} height={1280}>
+          <FullVariant Hero={VariantB_StatBarrage} accent="var(--bm-pink)" />
+        </DCArtboard>
+        <DCArtboard id="C" label="C · Split Universe — pink + blue slam, both lines side-by-side" width={1280} height={1280}>
+          <FullVariant Hero={VariantC_SplitUniverse} accent="var(--bm-blue)" />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+</body>
+</html>

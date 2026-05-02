@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Post 1 · 144% Faster Recovery</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #0A0A0A;
+    color: #F4EFE4;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-display);
+  }
+  /* scanlines */
+  .scan {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px);
+    pointer-events: none;
+  }
+  .ticks {
+    position: absolute; inset: 40px;
+    border: 1px solid rgba(244,239,228,0.08);
+    pointer-events: none;
+  }
+  .corner {
+    position: absolute; width: 28px; height: 28px;
+    border: 2px solid #EE3D8B;
+  }
+  .tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+  .tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+  .bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+  .br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+  .top-bar {
+    position: absolute; top: 56px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,239,228,0.55);
+  }
+  .stat-block {
+    position: absolute;
+    left: 80px; right: 80px; top: 50%; transform: translateY(-54%);
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 18px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #EE3D8B;
+    margin-bottom: 32px;
+  }
+  .num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 520px;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: #EE3D8B;
+    text-shadow: 12px 12px 0 rgba(238, 61, 139, 0.18);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 28px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #F4EFE4;
+    margin-top: 32px;
+  }
+  .ref {
+    font-family: var(--font-mono);
+    font-size: 14px; letter-spacing: 0.18em;
+    color: rgba(244,239,228,0.45);
+    margin-top: 16px;
+  }
+  .bottom-bar {
+    position: absolute; bottom: 56px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    color: #F4EFE4;
+  }
+  .wordmark sup {
+    font-size: 0.3em; vertical-align: top;
+    margin-left: 0.06em;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,239,228,0.55);
+    text-align: right;
+  }
+  .tag .pink { color: #EE3D8B; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="ticks">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="scan"></div>
+
+  <div class="top-bar">
+    <span>· clinical readout · stat 01 ·</span>
+    <span>boss mode / peak state</span>
+  </div>
+
+  <div class="stat-block">
+    <div class="eyebrow">— Faster recovery —</div>
+    <div class="num">144%</div>
+    <div class="label">vs control · 8-wk human trial</div>
+    <div class="ref">PeptiStrong® · Vicia faba peptide network · clinically dosed at 2.4g</div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="wordmark">BOSS<br>MODE<sup>™</sup></div>
+    <div class="tag">Sip. Dominate. Repeat.<span class="pink">™</span><br><span style="color:rgba(244,239,228,0.4)">drinkbossmode.net</span></div>
+  </div>
+</div>
+</body>
+</html>

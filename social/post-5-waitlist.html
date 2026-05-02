@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Post 5 · Waitlist</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #EE3D8B;
+    color: #F4EFE4;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-display);
+  }
+  .facets {
+    position: absolute; inset: 0;
+    background: url('../assets/facets-pink.png') center/cover;
+    opacity: 0.7;
+    mix-blend-mode: multiply;
+  }
+  .scan {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 4px);
+    pointer-events: none;
+  }
+  .ticks {
+    position: absolute; inset: 40px;
+    border: 2px solid rgba(10,10,10,0.4);
+    pointer-events: none;
+  }
+  .corner {
+    position: absolute; width: 32px; height: 32px;
+    border: 3px solid #0A0A0A;
+  }
+  .tl { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+  .tr { top: -3px; right: -3px; border-left: none; border-bottom: none; }
+  .bl { bottom: -3px; left: -3px; border-right: none; border-top: none; }
+  .br { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+
+  .top-bar {
+    position: absolute; top: 80px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 18px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #0A0A0A;
+    z-index: 3;
+  }
+  .stage {
+    position: absolute;
+    top: 230px; left: 80px; right: 80px;
+    z-index: 3;
+  }
+  .pre {
+    font-family: var(--font-mono);
+    font-size: 24px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #0A0A0A;
+    margin-bottom: 32px;
+  }
+  .heading {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 200px;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #0A0A0A;
+  }
+  .sub {
+    margin-top: 40px;
+    font-family: var(--font-text);
+    font-size: 32px;
+    line-height: 1.3;
+    color: #0A0A0A;
+    max-width: 720px;
+  }
+
+  .cta {
+    position: absolute;
+    bottom: 280px; left: 80px; right: 80px;
+    z-index: 3;
+  }
+  .cta-box {
+    background: #0A0A0A;
+    color: #F4EFE4;
+    padding: 40px 56px;
+    display: inline-flex; align-items: center; gap: 24px;
+    font-family: var(--font-mono);
+    font-size: 32px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 700;
+  }
+  .cta-box .arrow { font-size: 40px; }
+  .url-big {
+    margin-top: 24px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 64px;
+    letter-spacing: -0.02em;
+    color: #0A0A0A;
+    text-transform: uppercase;
+  }
+  .bottom-bar {
+    position: absolute; bottom: 56px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    z-index: 3;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    color: #0A0A0A;
+  }
+  .wordmark sup { font-size: 0.3em; vertical-align: top; margin-left: 0.06em; font-weight: 700; letter-spacing: 0; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #0A0A0A;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="facets"></div>
+  <div class="scan"></div>
+  <div class="ticks">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+
+  <div class="top-bar">
+    <span>· pre-launch · waitlist open ·</span>
+    <span>boss mode / peak state</span>
+  </div>
+
+  <div class="stage">
+    <div class="pre">— Be first —</div>
+    <div class="heading">Get on<br>the list.</div>
+    <div class="sub">Launch-day pricing. Early-supporter discount. First crack at the world's first RTD peptide shake. Blink and you'll miss it.</div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-box">Join the waitlist <span class="arrow">→</span></div>
+    <div class="url-big">drinkbossmode.net</div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="wordmark">BOSS<br>MODE<sup>™</sup></div>
+    <div class="tag">Sip. Dominate. Repeat.™</div>
+  </div>
+</div>
+</body>
+</html>

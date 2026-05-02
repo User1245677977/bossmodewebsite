@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Nav</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .nav { display:flex; align-items:center; justify-content: space-between; height: 64px; padding: 0 20px; background: var(--bm-paper); border-bottom: 1px solid var(--line); border-radius: 8px; }
+  .nav .left { display:flex; align-items:center; gap: 28px; }
+  .nav .logo { font-family: var(--font-display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; line-height: 1;}
+  .nav a { font-family: var(--font-text); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bm-ink); text-decoration: none; }
+  .nav a:hover { color: var(--bm-pink); }
+  .nav .cta { background: var(--bm-pink); color: #fff; padding: 10px 16px; border-radius: 4px; border: 2px solid var(--bm-ink); box-shadow: 3px 3px 0 0 var(--bm-ink); }
+</style>
+</head><body>
+<div class="lbl-eyebrow">Marketing Nav (Myo Context)</div>
+<div class="nav">
+  <div class="left">
+    <span class="logo">BOSS MODE</span>
+    <a href="#">Energy</a>
+    <a href="#">Myo-Peptide</a>
+    <a href="#">Science</a>
+    <a href="#">Story</a>
+  </div>
+  <a href="#" class="cta">Shop →</a>
+</div>
+<div style="height: 12px;"></div>
+<div data-product="energy" style="border-radius: 8px; overflow: hidden;">
+<div class="nav" style="background: var(--bg); border-bottom-color: var(--line);">
+  <div class="left">
+    <span class="logo" style="color: #fff;">BOSS MODE</span>
+    <a href="#" style="color: rgba(255,255,255,.85);">Energy</a>
+    <a href="#" style="color: rgba(255,255,255,.85);">Myo-Peptide</a>
+    <a href="#" style="color: rgba(255,255,255,.85);">Science</a>
+  </div>
+  <a href="#" class="cta" style="background: var(--bm-blue); color: var(--bm-ink); border-color: var(--bm-ink); box-shadow: 3px 3px 0 0 var(--bm-blue-deep);">Shop →</a>
+</div>
+</div>
+</body></html>

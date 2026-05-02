@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Post 4 · Peak State</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #0A0A0A;
+    color: #F4EFE4;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-display);
+  }
+  .facets {
+    position: absolute; inset: 0;
+    background: url('../assets/facets-black.png') center/cover;
+    opacity: 0.45;
+  }
+  .scan {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px);
+    pointer-events: none;
+  }
+  .eyebrow {
+    position: absolute; top: 88px; left: 80px;
+    font-family: var(--font-mono);
+    font-size: 18px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: #2BB6E8;
+    z-index: 3;
+  }
+  .stage {
+    position: absolute;
+    top: 200px; left: 80px; right: 80px; bottom: 240px;
+    display: flex; flex-direction: column; justify-content: center;
+    z-index: 3;
+  }
+  .line {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 132px;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #F4EFE4;
+  }
+  .line + .line { margin-top: 8px; }
+  .strike {
+    position: relative;
+    color: rgba(244,239,228,0.35);
+    display: inline-block;
+  }
+  .strike::after {
+    content: ''; position: absolute;
+    left: -8px; right: -8px;
+    top: 52%;
+    height: 8px;
+    background: #EE3D8B;
+    transform: rotate(-2deg);
+  }
+  .l-pink { color: #EE3D8B; }
+  .l-blue { color: #2BB6E8; }
+  .rule {
+    width: 100px; height: 4px;
+    background: #F4EFE4;
+    margin: 32px 0;
+  }
+  .signoff {
+    font-family: var(--font-mono);
+    font-size: 22px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,239,228,0.65);
+    margin-top: 24px;
+  }
+  .bottom-bar {
+    position: absolute; bottom: 56px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    z-index: 3;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    color: #F4EFE4;
+  }
+  .wordmark sup { font-size: 0.3em; vertical-align: top; margin-left: 0.06em; font-weight: 700; letter-spacing: 0; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,239,228,0.6);
+    text-align: right;
+  }
+  .tag .pink { color: #EE3D8B; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="facets"></div>
+  <div class="scan"></div>
+
+  <div class="eyebrow">— Manifesto · 01 —</div>
+
+  <div class="stage">
+    <div class="line">Goodbye <span class="strike">crash</span>.</div>
+    <div class="line">Goodbye <span class="strike">jitters</span>.</div>
+    <div class="line">Goodbye <span class="strike">compromise</span>.</div>
+    <div class="rule"></div>
+    <div class="line">Hello <span class="l-pink">Gains</span>.</div>
+    <div class="line">Hello <span class="l-blue">Productivity</span>.</div>
+    <div class="line">Hello <span style="color:#F4EFE4">Peak State</span>.</div>
+    <div class="signoff">Welcome to Boss Mode.</div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="wordmark">BOSS<br>MODE<sup>™</sup></div>
+    <div class="tag">Sip. Dominate. Repeat.<span class="pink">™</span><br><span style="color:rgba(244,239,228,0.45)">drinkbossmode.net</span></div>
+  </div>
+</div>
+</body>
+</html>

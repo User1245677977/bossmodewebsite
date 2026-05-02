@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Story 4</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .story { width: 1080px; height: 1920px; background: #0A0A0A; color: #F4EFE4; position: relative; overflow: hidden; font-family: var(--font-display); }
+  .facets { position: absolute; inset: 0; background: url('../assets/facets-black.png') center/cover; opacity: 0.4; }
+  .scan { position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px); pointer-events: none; }
+  .stage { position: absolute; top: 280px; left: 80px; right: 80px; bottom: 380px; display: flex; flex-direction: column; justify-content: center; }
+  .line { font-family: var(--font-display); font-weight: 900; font-size: 148px; line-height: 1; letter-spacing: -0.03em; text-transform: uppercase; color: #F4EFE4; }
+  .line + .line { margin-top: 4px; }
+  .strike { position: relative; color: rgba(244,239,228,0.35); display: inline-block; }
+  .strike::after { content: ''; position: absolute; left: -8px; right: -8px; top: 52%; height: 10px; background: #EE3D8B; transform: rotate(-2deg); }
+  .l-pink { color: #EE3D8B; }
+  .l-blue { color: #2BB6E8; }
+  .rule { width: 120px; height: 6px; background: #F4EFE4; margin: 36px 0; }
+  .signoff { font-family: var(--font-mono); font-size: 26px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(244,239,228,0.7); margin-top: 32px; }
+  .bottom { position: absolute; bottom: 200px; left: 0; right: 0; text-align: center; }
+  .wm { font-family: var(--font-display); font-weight: 900; font-size: 64px; letter-spacing: -0.02em; line-height: 0.9; color: #F4EFE4; }
+  .wm sup { font-size: 0.3em; vertical-align: top; margin-left: 0.06em; font-weight: 700; letter-spacing: 0; }
+  .url { margin-top: 16px; font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(244,239,228,0.55); }
+</style>
+</head>
+<body>
+<div class="story">
+  <div class="facets"></div>
+  <div class="scan"></div>
+  <div class="stage">
+    <div class="line">Goodbye <span class="strike">crash</span>.</div>
+    <div class="line">Goodbye <span class="strike">jitters</span>.</div>
+    <div class="rule"></div>
+    <div class="line">Hello <span class="l-pink">Gains</span>.</div>
+    <div class="line">Hello <span class="l-blue">Productivity</span>.</div>
+    <div class="signoff">Welcome to Boss Mode.</div>
+  </div>
+  <div class="bottom"><div class="wm">BOSS MODE<sup>™</sup></div><div class="url">drinkbossmode.net</div></div>
+</div>
+</body>
+</html>

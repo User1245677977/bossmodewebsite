@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Story 3</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .story { width: 1080px; height: 1920px; position: relative; overflow: hidden; font-family: var(--font-display); }
+  .pink { position: absolute; inset: 0; clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); background: linear-gradient(135deg, #FBE4EE 0%, #F8C5DC 50%, #EE3D8B 100%); }
+  .blue { position: absolute; inset: 0; clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); background: linear-gradient(225deg, #1B1A5E 0%, #2B2A82 50%, #2BB6E8 100%); }
+  .seam { position: absolute; left: 8%; right: 8%; top: 50%; height: 2px; background: #0A0A0A; opacity: 0.5; z-index: 4; }
+  .label-pink { position: absolute; top: 60px; left: 60px; font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.28em; text-transform: uppercase; color: #0A0A0A; z-index: 5; }
+  .label-blue { position: absolute; bottom: 60px; right: 60px; font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.28em; text-transform: uppercase; color: #F4EFE4; z-index: 5; text-align: right; }
+  .wm-block { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 5; }
+  .wm { font-family: var(--font-display); font-weight: 900; font-size: 220px; line-height: 0.85; letter-spacing: -0.04em; color: #0A0A0A; text-align: center; }
+  .wm sup { font-size: 0.32em; vertical-align: top; margin-left: 0.06em; font-weight: 700; letter-spacing: 0; }
+  .can-pink { position: absolute; left: 4%; top: 8%; z-index: 3; transform: rotate(-8deg); }
+  .can-pink img { height: 720px; filter: drop-shadow(8px 14px 0 rgba(10,10,10,0.18)); }
+  .can-blue { position: absolute; right: -8%; bottom: 8%; z-index: 3; transform: rotate(8deg); }
+  .can-blue img { height: 720px; filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55)); }
+  .tag { position: absolute; bottom: 120px; left: 0; right: 0; text-align: center; z-index: 6; font-family: var(--font-display); font-weight: 900; font-size: 56px; letter-spacing: -0.02em; text-transform: uppercase; color: #F4EFE4; }
+  .tag sup { font-size: 0.4em; vertical-align: top; margin-left: 0.1em; font-weight: 700; }
+  .url { position: absolute; bottom: 70px; left: 0; right: 0; text-align: center; z-index: 6; font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.24em; text-transform: uppercase; color: #F4EFE4; opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="story">
+  <div class="pink"></div>
+  <div class="blue"></div>
+  <div class="seam"></div>
+  <div class="label-pink">Myo · Recovery</div>
+  <div class="label-blue">Energy · Focus</div>
+  <div class="wm-block"><div class="wm">BOSS<br>MODE<sup>™</sup></div></div>
+  <div class="can-pink"><img src="../assets/cropped-can-myo-strawberry.png" alt=""></div>
+  <div class="can-blue"><img src="../assets/cropped-can-energy-apex.png" alt=""></div>
+  <div class="tag">Sip. Dominate. Repeat.<sup>™</sup></div>
+  <div class="url">drinkbossmode.net</div>
+</div>
+</body>
+</html>

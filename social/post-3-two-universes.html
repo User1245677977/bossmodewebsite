@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Boss Mode — Post 3 · Two Universes</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1a1a; }
+  .post {
+    width: 1080px; height: 1350px;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-display);
+  }
+  .pink-half {
+    position: absolute; inset: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    background: linear-gradient(135deg, #FBE4EE 0%, #F8C5DC 60%, #EE3D8B 100%);
+  }
+  .blue-half {
+    position: absolute; inset: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    background: linear-gradient(225deg, #1B1A5E 0%, #2B2A82 50%, #2BB6E8 100%);
+  }
+  .seam {
+    position: absolute; top: 6%; bottom: 6%; left: 50%;
+    width: 2px; margin-left: -1px;
+    background: #0A0A0A;
+    opacity: 0.5;
+    z-index: 4;
+  }
+  .label-pink {
+    position: absolute; top: 60px; left: 60px;
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #0A0A0A;
+    z-index: 5;
+  }
+  .label-blue {
+    position: absolute; top: 60px; right: 60px;
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #F4EFE4;
+    z-index: 5;
+    text-align: right;
+  }
+  .wordmark-block {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 200px;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: #0A0A0A;
+    text-align: center;
+  }
+  .wordmark sup { font-size: 0.32em; vertical-align: top; margin-left: 0.06em; font-weight: 700; letter-spacing: 0; }
+  .can-pink {
+    position: absolute;
+    left: 3%; bottom: 12%;
+    z-index: 3;
+    transform: rotate(-6deg);
+  }
+  .can-pink img {
+    height: 720px;
+    filter: drop-shadow(8px 14px 0 rgba(10,10,10,0.18));
+  }
+  .can-blue {
+    position: absolute;
+    right: -8%; bottom: 12%;
+    z-index: 3;
+    transform: rotate(6deg);
+  }
+  .can-blue img {
+    height: 720px;
+    filter: drop-shadow(0 14px 30px rgba(0,0,0,0.55));
+  }
+  .tag {
+    position: absolute;
+    bottom: 56px; left: 0; right: 0;
+    text-align: center;
+    z-index: 6;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #0A0A0A;
+  }
+  .tag sup { font-size: 0.4em; vertical-align: top; margin-left: 0.1em; font-weight: 700; }
+  .url {
+    position: absolute;
+    bottom: 24px; left: 0; right: 0;
+    text-align: center;
+    z-index: 6;
+    font-family: var(--font-mono);
+    font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #0A0A0A;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="pink-half"></div>
+  <div class="blue-half"></div>
+  <div class="seam"></div>
+
+  <div class="label-pink">Myo · Recovery · Pink</div>
+  <div class="label-blue">Energy · Focus · Blue</div>
+
+  <div class="wordmark-block">
+    <div class="wordmark">BOSS<br>MODE<sup>™</sup></div>
+  </div>
+
+  <div class="can-pink">
+    <img src="../assets/cropped-can-myo-strawberry.png" alt="Myo-Peptide Strawberry">
+  </div>
+  <div class="can-blue">
+    <img src="../assets/cropped-can-energy-apex.png" alt="Energy Apex">
+  </div>
+
+  <div class="tag">Sip. Dominate. Repeat.<sup>™</sup></div>
+  <div class="url">drinkbossmode.net</div>
+</div>
+</body>
+</html>
