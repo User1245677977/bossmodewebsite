@@ -11,11 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Design tokens -->
-  <link rel="stylesheet" href="../colors_and_type.css">
+  <!-- Design tokens — now at root level -->
+  <link rel="stylesheet" href="colors_and_type.css">
 
   <style>
-    /* ── Reset & base ── */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: var(--bm-paper); overflow-x: hidden; }
     #root { min-height: 100vh; }
@@ -24,7 +23,6 @@
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-thumb { background: var(--bm-ink); border-radius: 4px; }
 
-    /* ── Font + token overrides ── */
     :root {
       --font-display: 'Orbitron', sans-serif;
       --font-text:    'Barlow Condensed', sans-serif;
@@ -33,7 +31,6 @@
       --ease-out:     cubic-bezier(.2,.7,.2,1);
     }
 
-    /* ── Shared utility classes ── */
     .bm-eyebrow {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -56,8 +53,6 @@
       text-transform: uppercase;
       margin-bottom: 20px;
     }
-
-    /* ── Hero ── */
     .bm-hero-inner {
       position: relative;
       z-index: 2;
@@ -84,51 +79,27 @@
       max-width: 480px;
       margin-bottom: 28px;
     }
-    .bm-hero-form {
-      display: flex;
-      max-width: 460px;
-      margin-bottom: 12px;
-    }
+    .bm-hero-form { display: flex; max-width: 460px; margin-bottom: 12px; }
     .bm-hero-form input {
-      flex: 1;
-      height: 52px;
-      padding: 0 16px;
-      background: #fff;
-      border: 2px solid var(--bm-paper);
-      border-right: none;
-      border-radius: 4px 0 0 4px;
-      font-family: var(--font-text);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      outline: none;
-      color: var(--bm-ink);
+      flex: 1; height: 52px; padding: 0 16px;
+      background: #fff; border: 2px solid var(--bm-paper);
+      border-right: none; border-radius: 4px 0 0 4px;
+      font-family: var(--font-text); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+      outline: none; color: var(--bm-ink);
     }
     .bm-hero-form input::placeholder {
-      color: #999;
-      font-family: var(--font-text);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      color: #999; font-family: var(--font-text); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
     }
     .bm-hero-form button {
-      height: 52px;
-      padding: 0 22px;
-      background: var(--bm-pink);
-      color: #fff;
-      border: 2px solid var(--bm-paper);
-      border-radius: 0 4px 4px 0;
-      font-family: var(--font-text);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 4px 4px 0 0 var(--bm-paper);
-      transition: all 120ms var(--ease-out);
-      white-space: nowrap;
+      height: 52px; padding: 0 22px;
+      background: var(--bm-pink); color: #fff;
+      border: 2px solid var(--bm-paper); border-radius: 0 4px 4px 0;
+      font-family: var(--font-text); font-weight: 700;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; box-shadow: 4px 4px 0 0 var(--bm-paper);
+      transition: all 120ms var(--ease-out); white-space: nowrap;
     }
     .bm-hero-form button:hover {
       background: var(--bm-pink-deep);
@@ -136,155 +107,70 @@
       transform: translate(2px, 2px);
     }
     .bm-hero-cans {
-      position: relative;
-      height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+      position: relative; height: 520px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
     }
-
-    /* ── Section headings ── */
     h2 {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(36px, 5.5vw, 80px);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin: 12px 0 0;
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(36px, 5.5vw, 80px); line-height: 0.92;
+      letter-spacing: -0.02em; text-transform: uppercase; margin: 12px 0 0;
     }
-
-    /* ── Grids ── */
-    .bm-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .bm-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .bm-grid-founder {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    /* ── Section padding ── */
+    .bm-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .bm-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .bm-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .bm-grid-founder { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
     .bm-section-pad { padding: 96px 48px; }
-
-    /* ── Product card hover ── */
-    .bm-product-card:hover {
-      transform: translate(-3px, -3px) !important;
-    }
-
-    /* ── Nav tweaks ── */
+    .bm-product-card:hover { transform: translate(-3px, -3px) !important; }
     .bm-nav {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 30 !important;
+      position: sticky !important; top: 0 !important; z-index: 30 !important;
       background: var(--bm-paper) !important;
       border-bottom: 1.5px solid var(--bm-ink) !important;
-      height: 68px !important;
-      padding: 0 48px !important;
+      height: 68px !important; padding: 0 48px !important;
     }
     .bm-btn:hover {
       box-shadow: 2px 2px 0 0 var(--bm-ink) !important;
       transform: translate(2px, 2px);
     }
+    .bm-footer-nl { grid-template-columns: 1.2fr 1fr; }
+    .bm-footer-cols { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
 
-    /* ════════════════════════════════════
-       TABLET (≤900px)
-    ════════════════════════════════════ */
     @media (max-width: 900px) {
       .bm-nav { padding: 0 20px !important; height: 64px !important; }
       .bm-nav-links { display: none !important; }
       .bm-nav-account, .bm-nav-shop { display: none !important; }
       .bm-nav-burger { display: inline-flex !important; }
       .bm-nav-mobile-panel { top: 64px !important; }
-
-      .bm-hero-inner {
-        grid-template-columns: 1fr !important;
-        padding: 80px 20px 48px !important;
-        gap: 32px !important;
-      }
+      .bm-hero-inner { grid-template-columns: 1fr !important; padding: 80px 20px 48px !important; gap: 32px !important; }
       .bm-hero-cans { height: 300px !important; }
       .bm-hero-h1 { font-size: clamp(48px, 11vw, 80px) !important; }
-
       .bm-grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
       .bm-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
       .bm-grid-founder { grid-template-columns: 1fr !important; gap: 32px !important; }
       .bm-section-pad { padding: 64px 24px !important; }
-
       h2 { font-size: clamp(32px, 7vw, 56px) !important; }
-
+      .bm-footer-nl { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .bm-footer-cols { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+      .bm-pdp-hero { grid-template-columns: 1fr !important; }
+      .bm-pdp-info { padding: 40px 20px !important; }
+      .bm-mission-grid { grid-template-columns: 1fr !important; }
       [style*="grid-template-columns: repeat(3"],
-      [style*="grid-template-columns: repeat(4"],
-      [style*="gridTemplateColumns: 'repeat(3"],
-      [style*="gridTemplateColumns: 'repeat(4"] {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
+      [style*="gridTemplateColumns: 'repeat(3"] { grid-template-columns: repeat(2, 1fr) !important; }
       [style*="grid-template-columns: 1fr 1.4fr"],
       [style*="grid-template-columns: 1.2fr 1fr"],
       [style*="grid-template-columns: 1fr 2fr"],
-      [style*="grid-template-columns: 2fr 1fr"] {
-        grid-template-columns: 1fr !important;
-      }
+      [style*="grid-template-columns: 2fr 1fr"] { grid-template-columns: 1fr !important; }
     }
 
-    /* ════════════════════════════════════
-       MOBILE (≤600px)
-    ════════════════════════════════════ */
     @media (max-width: 600px) {
-      .bm-grid-3,
-      .bm-grid-4 { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .bm-grid-3, .bm-grid-4, .bm-grid-2 { grid-template-columns: 1fr !important; gap: 16px !important; }
       .bm-section-pad { padding: 48px 20px !important; }
       h2 { font-size: clamp(28px, 9vw, 44px) !important; }
-
       .bm-hero-form { flex-direction: column !important; gap: 8px !important; }
-      .bm-hero-form input {
-        border-right: 2px solid var(--bm-paper) !important;
-        border-radius: 4px !important;
-      }
-      .bm-hero-form button {
-        border-radius: 4px !important;
-        box-shadow: 4px 4px 0 0 var(--bm-paper) !important;
-      }
-
-      [style*="grid-template-columns: repeat(2"],
-      [style*="grid-template-columns: repeat(3"],
-      [style*="grid-template-columns: repeat(4"],
-      [style*="gridTemplateColumns: 'repeat(2"],
-      [style*="gridTemplateColumns: 'repeat(3"],
-      [style*="gridTemplateColumns: 'repeat(4"] {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-      }
-
+      .bm-hero-form input { border-right: 2px solid var(--bm-paper) !important; border-radius: 4px !important; }
+      .bm-hero-form button { border-radius: 4px !important; box-shadow: 4px 4px 0 0 var(--bm-paper) !important; }
       section { padding: 48px 20px !important; }
-      footer  { padding: 48px 20px 24px !important; }
-
-      [style*="grid-template-columns: 1.4fr 1fr 1fr 1fr"],
-      [style*="gridTemplateColumns: '2fr 1fr 1fr 1fr"] {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 24px !important;
-      }
-
+      footer { padding: 48px 20px 24px !important; }
       [style*="position: sticky"] { position: static !important; }
-
-      section > div[style*="position: absolute"][style*="background: url"] {
-        opacity: 0.15 !important;
-      }
-
-      body > div > div:first-child { padding: 10px 16px !important; font-size: 10px !important; }
-
-      [style*="font-size: 144"], [style*="fontSize: 144"] { font-size: 64px !important; }
-      [style*="font-size: 88"],  [style*="fontSize: 88"]  { font-size: 48px !important; }
-      [style*="font-size: 80"],  [style*="fontSize: 80"]  { font-size: 44px !important; }
-      [style*="font-size: 64"],  [style*="fontSize: 64"]  { font-size: 36px !important; }
     }
   </style>
 
@@ -295,19 +181,20 @@
 <body>
   <div id="root"></div>
 
-  <script type="text/babel" src="ui.jsx"></script>
-  <script type="text/babel" src="cart.jsx"></script>
-  <script type="text/babel" src="router.jsx"></script>
-  <script type="text/babel" src="Nav.jsx"></script>
-  <script type="text/babel" src="Footer.jsx"></script>
-  <script type="text/babel" src="CartDrawer.jsx"></script>
-  <script type="text/babel" src="scroll-utils.jsx"></script>
-  <script type="text/babel" src="VariantB.jsx"></script>
-  <script type="text/babel" src="HomePage.jsx"></script>
-  <script type="text/babel" src="ShopPage.jsx"></script>
-  <script type="text/babel" src="ProductPage.jsx"></script>
-  <script type="text/babel" src="SciencePage.jsx"></script>
-  <script type="text/babel" src="AboutPage.jsx"></script>
+  <!-- All paths now point to the site/ subfolder -->
+  <script type="text/babel" src="site/ui.jsx"></script>
+  <script type="text/babel" src="site/cart.jsx"></script>
+  <script type="text/babel" src="site/router.jsx"></script>
+  <script type="text/babel" src="site/Nav.jsx"></script>
+  <script type="text/babel" src="site/Footer.jsx"></script>
+  <script type="text/babel" src="site/CartDrawer.jsx"></script>
+  <script type="text/babel" src="site/scroll-utils.jsx"></script>
+  <script type="text/babel" src="site/VariantB.jsx"></script>
+  <script type="text/babel" src="site/HomePage.jsx"></script>
+  <script type="text/babel" src="site/ShopPage.jsx"></script>
+  <script type="text/babel" src="site/ProductPage.jsx"></script>
+  <script type="text/babel" src="site/SciencePage.jsx"></script>
+  <script type="text/babel" src="site/AboutPage.jsx"></script>
 
   <script type="text/babel">
     function PreLaunchBanner() {
