@@ -68,12 +68,12 @@ function HomeHero() {
 
         <div className="bm-hero-cans">
           <img
-            src="../assets/cropped-can-myo-strawberry.png"
+            src="assets/cropped-can-myo-strawberry.png"
             alt="Myo-Peptide Strawberry Milkshake"
             style={{ maxHeight: 420, maxWidth: 220, width: 'auto', height: 'auto', objectFit: 'contain', transform: 'rotate(-6deg)', filter: 'drop-shadow(8px 10px 0 rgba(10,10,10,0.3))' }}
           />
           <img
-            src="../assets/cropped-can-energy-apex.png"
+            src="assets/cropped-can-energy-apex.png"
             alt="Energy Apex Punch"
             style={{ maxHeight: 460, maxWidth: 240, width: 'auto', height: 'auto', objectFit: 'contain', transform: 'translateY(20px) rotate(4deg)', filter: 'drop-shadow(8px 10px 0 rgba(57,255,20,0.2))' }}
           />
